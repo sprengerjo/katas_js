@@ -1,10 +1,16 @@
+# Eclipse
+.classpath
+.project
+.settings/
 
-#java specific
-*.class
+# Intellij
+.idea/
+*.iml
+*.iws
 
-## generic files to ignore
-*~
-*.lock
-*.DS_Store
-*.swp
-*.out
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
