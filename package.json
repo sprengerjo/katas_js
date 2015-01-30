@@ -1,0 +1,36 @@
+{
+  "name": "katas_js",
+  "version": "1.0.0",
+  "description": "project for js related katas",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma-coverage": "^0.2.7",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.5",
+    "phantomjs": "^1.9.13",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprengerjo/katas_js"
+  },
+  "keywords": [
+    "js",
+    "karma",
+    "kata"
+  ],
+  "author": "sprenger.j",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sprengerjo/katas_js/issues"
+  },
+  "homepage": "https://github.com/sprengerjo/katas_js"
+}
