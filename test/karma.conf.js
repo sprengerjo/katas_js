@@ -1,28 +1,42 @@
-module.exports = function(config){
+module.exports = function (config) {
     config.set({
 
-        basePath : '../',
+        basePath: '../',
 
-        files : [
+        files: [
             'app/js/**/*.js',
             'test/unit/**/*Spec.js'
         ],
+
+        preprocessors: {
+            'app/**/*.js': ['6to5'],
+            'test/unit/**/*.js': ['6to5']
+        },
+        '6to5Preprocessor': {
+            options: {
+                sourceMap: 'inline'
+            },
+            filename: function(file) {
+                return file.originalPath.replace(/\.js$/, '.es5.js');
+            },
+            sourceFileName: function(file) {
+                return file.originalPath;
+            }
+        },
 
         autoWatch: true,
 
         singleRun: false,
 
-        frameworks: ['jasmine'],
+        frameworks: [
+            'jasmine',
+            'jasmine-matchers'
 
-        browsers : ['Chrome','PhantomJS'],
-
-        plugins : [
-            'karma-phantomjs-launcher',
-            'karma-chrome-launcher',
-            'karma-jasmine'
         ],
 
-        junitReporter : {
+        browsers: ['PhantomJS'],
+
+        junitReporter: {
             outputFile: 'test_out/unit.xml',
             suite: 'unit'
         }

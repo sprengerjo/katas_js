@@ -1,10 +1,13 @@
-var BowlingGame = {
+let BowlingGame = {
     scores: [],
-    create: function () {
+    create() {
         this.scores = [];
-        return this;
+        return Object.create(this);
     },
-    score: function () {
+    roll: function (number) {
+        this.scores.push(number);
+    },
+    score() {
         var frame = 0, current = 0, score = 0;
 
         function isStrike() {
@@ -40,8 +43,5 @@ var BowlingGame = {
             }
         }
         return score;
-    },
-    roll: function (number) {
-        this.scores.push(number);
     }
 };

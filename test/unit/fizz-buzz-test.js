@@ -1,7 +1,7 @@
 FizzBuzzTest = TestCase("FizzBuzzTest");
 
 FizzBuzzTest.prototype.setUp = function() {
-	fizzBuzz = FizzBuzz.create();
+	fizzBuzz = Object.create(FizzBuzz);
 };
 
 FizzBuzzTest.prototype.test1MustBe1 = function() {
