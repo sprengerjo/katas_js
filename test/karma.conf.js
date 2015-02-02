@@ -31,7 +31,6 @@ module.exports = function (config) {
         frameworks: [
             'jasmine',
             'jasmine-matchers'
-
         ],
 
         browsers: ['PhantomJS'],
