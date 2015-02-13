@@ -1,10 +1,8 @@
-'use strict';
-
-describe('bowling', function () {
+describe('bowling', () => {
     var g;
-    beforeEach( () => {
-        g = BowlingGame.create();
-    });
+    beforeEach(() => {
+        g = new BowlingGame;
+    })
 
     function rollMany(rolls, pins) {
         for (var i = 0; i < rolls; i++) {
