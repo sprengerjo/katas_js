@@ -1,9 +1,6 @@
-'use strict';
 
-let GameOfLife = {
-    create(){
-        return Object.create(this);
-    },
+
+module.exports = class GameOfLife {
     getNeighbours(cell) {
         var neighbours = [];
         if (cell !== undefined && cell !== null && cell.length > 0) {
@@ -20,5 +17,4 @@ let GameOfLife = {
         }
         return neighbours;
     }
-
 }
