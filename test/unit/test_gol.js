@@ -1,4 +1,5 @@
 'use strict';
+
 const should = require('should');
 
 const GameOfLife = require('./../../app/js/gol');
