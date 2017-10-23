@@ -3,11 +3,11 @@
 import {expect} from 'chai';
 import * as R from 'ramda';
 
-import {QuickSort} from '../../app/ts/quick_sort';
+import {QuickSort} from '../src/quick_sort';
 
 const sort = QuickSort.sort;
 
-describe.only('quickly sort list', () => {
+describe('quickly sort list', () => {
 
     it('should return sorted inputs', () => {
         expect(sort([])).eql([]);

@@ -3,7 +3,7 @@
 const should = require('should');
 const R = require('ramda');
 
-const Bowling = require('./../../app/js/bowling');
+const Bowling = require('../src/bowling');
 
 describe('bowling calculator', function () {
 

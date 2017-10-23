@@ -1,8 +1,24 @@
 'use strict';
 
-const R = require('ramda');
+import * as R from 'ramda';
+import {List, Repeat} from 'immutable';
 
-class FizzBuzz {
+export class FizzBuzz {
+
+    static upToStringZipImuutable(n) {
+
+        const repFlat = (s: List<string>, n: number): List<string> => {
+            return Repeat(s, n).flatten().take(n);
+        };
+
+        const fizz = repFlat(List(['', '', 'fizz']), n);
+        const buzz = repFlat(List(['', '', '', '', 'buzz']), n);
+
+        return fizz
+            .zipWith((a, b) => a + b, buzz)
+            .map((s, i) => R.isEmpty(s) ? R.toString(R.inc(i)) : s)
+            .toJS();
+    }
 
     static upToStringZip(n) {
         const replaceBlanksWithNumber = (fb, idx) => R.isEmpty(fb) ? '' + R.inc(idx) : fb;
@@ -42,5 +58,3 @@ class FizzBuzz {
         return R.map(fb, R.range(1, R.inc(n)));
     }
 }
-
-module.exports = FizzBuzz;

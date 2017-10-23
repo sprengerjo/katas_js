@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Site</title>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>{body}</h1>
+  <h2 id="generationCount"></h2>
+  <canvas id="myCanvas"></canvas>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="./GameOfLifeCanvas.js"></script>
+<script type="text/javascript">
+
+  let generationCount = 1;
+  counter(generationCount);
+
+  function counter(count) {
+    const counterDiv = $('<div/>', { 'text': 'generation count:' + count });
+    $('#generationCount').html(counterDiv);
+  }
+
+  $(document).ready(function() {
+    var width = 50;
+    var height = 50;
+    var stop = false;
+    var canvasOptions = {
+      size: 10,
+      figure: 'square'
+    }
+    const golCanvas = new GameOfLiveCanvas("myCanvas", width, height, canvasOptions);
+
+    function render() {
+
+      current = golCanvas.getAlive();
+
+      if (current && current.length !== 0) {
+        counter(generationCount++);
+
+        $.ajax({
+          url: '/gol',
+          type: 'post',
+          contentType: 'application/json',
+          data: JSON.stringify(current)
+        }).done(function(data) {
+          current = data;
+          window.setTimeout(function() {
+            golCanvas.clear();
+
+            for (i = 0; i < current.length; i++) {
+              golCanvas.alive(current[i][0], current[i][1]);
+            }
+            if (!stop) {
+              render();
+            }
+          }, 100);
+        });
+      }
+    }
+
+    function stopRender() {
+      stop = true;
+    }
+
+    $('#run').on('click', function() {
+      stop = false;
+      render();
+    });
+
+    $('#stop').on('click', function() {
+      stopRender();
+    });
+
+  });
+
+</script>
+
+<button id="run" class="btn btn-success">Run!</button>
+<button id="stop" class="btn btn-danger">Stop!</button>
+
+</body>
+</html>

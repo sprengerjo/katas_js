@@ -16,7 +16,6 @@
     "@types/chai": "^4.0.4",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
-    "ramda": "^0.21.0",
     "should": "^10.0.0",
     "sinon": "^1.17.5"
   },
@@ -29,7 +28,13 @@
   },
   "homepage": "https://github.com/sprengerjo/katas_js",
   "dependencies": {
+    "@types/immutable": "^3.8.7",
     "@types/mocha": "^2.2.43",
-    "@types/ramda": "^0.24.16"
+    "@types/ramda": "^0.24.16",
+    "@types/should": "^11.2.0",
+    "body-parser": "^1.18.2",
+    "immutable": "^3.8.2",
+    "path": "^0.12.7",
+    "ramda": "^0.25.0"
   }
 }
