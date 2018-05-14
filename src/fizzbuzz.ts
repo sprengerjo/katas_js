@@ -7,9 +7,7 @@ export class FizzBuzz {
 
     static upToStringZipImuutable(n) {
 
-        const repFlat = (s: List<string>, n: number): List<string> => {
-            return Repeat(s, n).flatten().take(n);
-        };
+        const repFlat = (s: List<string>, n: number): any => Repeat(s, n).flatten().take(n);
 
         const fizz = repFlat(List(['', '', 'fizz']), n);
         const buzz = repFlat(List(['', '', '', '', 'buzz']), n);
@@ -40,21 +38,34 @@ export class FizzBuzz {
         const fb = R.always(f() + b());
         const funs = [s, s, f, s, b, f, s, s, f, b, s, f, s, s, fb];
 
-        const selectFun = n => R.nth(R.modulo(R.dec(n), 15), funs);
+        const selectFun: Function = (n) => R.nth(R.modulo(R.dec(n), 15), funs);
         const fizzBuzzify = (n) => R.call(selectFun(n), n);
 
         return R.map(fizzBuzzify, R.range(1, R.inc(n)));
     }
 
     static upToConditional(n) {
-        const fbMod = mod => i => i % mod === 0;
+        const isModuloOf = mod => i => i % mod === 0;
         const fb = R.cond([
-            [fbMod(15), R.always('fizzbuzz')],
-            [fbMod(5), R.always('buzz')],
-            [fbMod(3), R.always('fizz')],
+            [isModuloOf(15), R.always('fizzbuzz')],
+            [isModuloOf(5), R.always('buzz')],
+            [isModuloOf(3), R.always('fizz')],
             [R.T, i => '' + i]
         ]);
 
         return R.map(fb, R.range(1, R.inc(n)));
+	}
+
+    static upToPipeline(n) {
+		const isModuloOf = mod => (i: any): boolean => i % mod === 0;
+		const apply = (m, s) => R.when(isModuloOf(m), R.always(s))
+
+		const fizzBuzz = apply(15, 'fizzbuzz')
+		const fizz = apply(3, 'fizz')
+		const buzz = apply(5, 'buzz')
+
+		const fizzbuzzPipeline = R.pipe(fizzBuzz, fizz, buzz, (i) => '' + i)
+
+        return R.map(fizzbuzzPipeline, R.range(1, R.inc(n)));
     }
 }

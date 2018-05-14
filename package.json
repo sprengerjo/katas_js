@@ -9,7 +9,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/**/*.js --reporter spec --slow 0 -t 20000",
+    "test": "./node_modules/.bin/mocha ./test/**/*.*s --require ts-node/register --reporter spec --slow 0 -t 20000",
     "testw": "./node_modules/.bin/mocha -R nyan -w"
   },
   "devDependencies": {
@@ -35,6 +35,8 @@
     "body-parser": "^1.18.2",
     "immutable": "^3.8.2",
     "path": "^0.12.7",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "ts-node": "^6.0.3",
+    "typescript": "^2.8.3"
   }
 }

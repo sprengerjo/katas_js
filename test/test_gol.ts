@@ -3,7 +3,7 @@
 import * as should from 'should';
 import GameOfLife from '../src/gol';
 
-describe.only('game of life', () => {
+describe('game of life', () => {
     let g;
 
     beforeEach(() => {
