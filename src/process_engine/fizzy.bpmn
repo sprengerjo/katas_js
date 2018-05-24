@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.10.0">
+  <bpmn:collaboration id="Collaboration_0389xbx">
+    <bpmn:participant id="Participant_1jg62wf" name="vehicle togo" processRef="fizzy" />
+  </bpmn:collaboration>
+  <bpmn:process id="fizzy" isExecutable="true">
+    <bpmn:extensionElements>
+      <camunda:properties>
+        <camunda:property name="persist" value="false" />
+      </camunda:properties>
+    </bpmn:extensionElements>
+    <bpmn:laneSet>
+      <bpmn:lane id="Lane_0phafbw" name="wtf">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_111wrmv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>st_buzz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>st_fizz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ScriptTask_0u50x1j</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0dc8yte</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0dc8yte" sourceRef="StartEvent_1" targetRef="ScriptTask_0u50x1j" />
+    <bpmn:sequenceFlow id="SequenceFlow_1e9pehv" sourceRef="st_fizz" targetRef="st_buzz" />
+    <bpmn:sequenceFlow id="SequenceFlow_015js0v" sourceRef="st_buzz" targetRef="EndEvent_111wrmv">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="mapper" value="token.current.toString()" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="EndEvent_111wrmv">
+      <bpmn:incoming>SequenceFlow_015js0v</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="st_buzz" name="buzz?" scriptFormat="JavaScript">
+      <bpmn:incoming>SequenceFlow_1e9pehv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_015js0v</bpmn:outgoing>
+      <bpmn:script><![CDATA[if(token.current % 5 === 0) return "buzz"
+else return token.current]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="st_fizz" name="fizz?" scriptFormat="JavaScript">
+      <bpmn:incoming>SequenceFlow_1obxr9l</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1e9pehv</bpmn:outgoing>
+      <bpmn:script><![CDATA[if(token.current% 3 === 0) return "fizz"
+else return token.current
+]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0u50x1j" name="fizzbuzz?" scriptFormat="JavaScript">
+      <bpmn:incoming>SequenceFlow_0dc8yte</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1obxr9l</bpmn:outgoing>
+      <bpmn:script><![CDATA[if(token.current % 15 === 0) return "fizzbuzz"
+else return token.current]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1obxr9l" sourceRef="ScriptTask_0u50x1j" targetRef="st_fizz" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0389xbx">
+      <bpmndi:BPMNShape id="Participant_1jg62wf_di" bpmnElement="Participant_1jg62wf">
+        <dc:Bounds x="123" y="82" width="1104" height="305" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="185" y="184" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="220" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dc8yte_di" bpmnElement="SequenceFlow_0dc8yte">
+        <di:waypoint xsi:type="dc:Point" x="221" y="202" />
+        <di:waypoint xsi:type="dc:Point" x="254" y="202" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="192.5" y="180.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_111wrmv_di" bpmnElement="EndEvent_111wrmv">
+        <dc:Bounds x="716" y="184" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="689" y="223" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0phafbw_di" bpmnElement="Lane_0phafbw">
+        <dc:Bounds x="153" y="82" width="1074" height="305" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1e9pehv_di" bpmnElement="SequenceFlow_1e9pehv">
+        <di:waypoint xsi:type="dc:Point" x="498" y="202" />
+        <di:waypoint xsi:type="dc:Point" x="552" y="202" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="525" y="180.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_18wnxoi_di" bpmnElement="st_fizz">
+        <dc:Bounds x="398" y="162" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_08u6hvv_di" bpmnElement="st_buzz">
+        <dc:Bounds x="552" y="162" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_015js0v_di" bpmnElement="SequenceFlow_015js0v">
+        <di:waypoint xsi:type="dc:Point" x="652" y="202" />
+        <di:waypoint xsi:type="dc:Point" x="716" y="202" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="684" y="180.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_0u50x1j_di" bpmnElement="ScriptTask_0u50x1j">
+        <dc:Bounds x="254" y="162" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1obxr9l_di" bpmnElement="SequenceFlow_1obxr9l">
+        <di:waypoint xsi:type="dc:Point" x="354" y="202" />
+        <di:waypoint xsi:type="dc:Point" x="398" y="202" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="376" y="180" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,9 @@
+{
+  "from": "info@process-engine.io",
+  "auth": {
+    "user": "ec4a0a79e8a4d0",
+    "pass": "0dec8f022bf6e0"
+  },
+  "host": "localhost",
+  "port": "25647"
+  }

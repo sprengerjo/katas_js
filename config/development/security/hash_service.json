@@ -1,0 +1,5 @@
+{
+    "defaultHashType": "sha256",
+    "defaultSecret": "secret",
+    "defaultSalt": "salt"
+}

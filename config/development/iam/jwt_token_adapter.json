@@ -1,0 +1,5 @@
+{
+  "expiresIn": "24h",
+  "algorithm": "HS256",
+  "secret": "S0lJZ3pobHl0NXJxMnVMVjF4Z2tRY2liRzZPcjdKSmN6Q0s3MFVTODVWV0xacEg4WGJ6b0tHRTB2dmNhRmZk"
+}
