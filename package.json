@@ -6,7 +6,8 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/bowling_server",
+    "start": "node ./dist/bin/bowling_server",
+    "start-gol": "node ./bin/gol_server",
     "test": "jest --config ./jest.json"
   },
   "devDependencies": {

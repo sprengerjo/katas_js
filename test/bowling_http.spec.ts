@@ -10,7 +10,7 @@ describe('http bowling game calculator', () => {
   let server;
 
   beforeAll(async () => {
-    server = await import('../src/bowling_server');
+    server = await import('../bin/bowling_server');
     return server;
   });
 

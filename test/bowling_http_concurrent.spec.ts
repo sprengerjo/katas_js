@@ -9,7 +9,7 @@ describe('test should be run, since the server gets an random port number', () =
   let server;
 
   beforeAll(async() => {
-    server = await import('../src/bowling_server');
+    server = await import('../bin/bowling_server');
     return server;
   });
 

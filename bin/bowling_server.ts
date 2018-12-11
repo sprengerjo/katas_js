@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 import {pathOr} from 'ramda'
-import {score} from './bowling_score_calculator';
+import {score} from '../src/bowling_score_calculator';
 
 export const server = new Promise((resolve) => {
 
