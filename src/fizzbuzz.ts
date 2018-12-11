@@ -20,6 +20,7 @@ export class FizzBuzz {
 
     static upToStringZip(n) {
         const replaceBlanksWithNumber = (fb, idx) => R.isEmpty(fb) ? '' + R.inc(idx) : fb;
+        // @ts-ignore
         const mapIndexed = R.addIndex(R.map);
         const repFlat = (s, n) => R.compose(
             R.take(n),
@@ -38,7 +39,7 @@ export class FizzBuzz {
         const fb = R.always(f() + b());
         const funs = [s, s, f, s, b, f, s, s, f, b, s, f, s, s, fb];
 
-        const selectFun: Function = (n) => R.nth(R.modulo(R.dec(n), 15), funs);
+        const selectFun: any = (n) => R.nth(R.modulo(R.dec(n), 15), funs);
         const fizzBuzzify = (n) => R.call(selectFun(n), n);
 
         return R.map(fizzBuzzify, R.range(1, R.inc(n)));

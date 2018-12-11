@@ -5,19 +5,17 @@
   "author": "sprenger.j",
   "license": "ISC",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test/**/*.*s --require ts-node/register --reporter spec --slow 0 -t 20000",
-    "testw": "./node_modules/.bin/mocha -R nyan -w"
+    "start": "node ./dist/bowling_server",
+    "test": "jest --config ./jest.json"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.4",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "should": "^10.0.0",
-    "sinon": "^1.17.5"
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "axios": "^0.18.0",
+    "jest": "^23.6.0",
+    "sinon": "^1.17.5",
+    "ts-jest": "^23.10.5"
   },
   "repository": {
     "type": "git",
@@ -64,16 +62,14 @@
     "@process-engine/process_engine_http": "^2.0.0",
     "@process-engine/process_repository": "^1.1.0",
     "@types/immutable": "^3.8.7",
-    "@types/mocha": "^2.2.43",
     "@types/ramda": "^0.24.16",
-    "@types/should": "^11.2.0",
     "addict-ioc": "^2.3.7",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "fs": "0.0.1-security",
     "immutable": "^3.8.2",
     "path": "^0.12.7",
-    "ramda": "^0.25.0",
-    "ts-node": "^6.0.3",
-    "typescript": "^2.8.3"
+    "ramda": "^0.26.1",
+    "typescript": "^3.2.2"
   }
 }

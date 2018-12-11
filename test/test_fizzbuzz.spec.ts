@@ -1,8 +1,9 @@
 'use strict';
-import * as should from 'should';
 import * as R from 'ramda';
 import {FizzBuzz} from '../src/fizzbuzz';
 import {ProcessEngine} from '../src/process_engine/process_engine_boilerplate';
+
+jest.setTimeout(200000);
 
 describe('fizz buzz', () => {
 
@@ -11,14 +12,14 @@ describe('fizz buzz', () => {
     FizzBuzz.upToConditional, FizzBuzz.upToPipeline, FizzBuzz.upToStringZipImuutable];
 
   let processEngine;
-  before(async() => {
+  beforeAll(async() => {
     processEngine = new ProcessEngine();
     await processEngine.initialize();
   });
 
   const assertFizzBuzz = (n, expected) => R.pipe(
     R.map((fun: any) => R.call(fun, n)),
-    R.forEach((actual) => should(actual).eql(expected)))
+    R.forEach((actual) => expect(actual).toEqual(expected)))
   (functions);
 
   it('should assert fizz buzz up to ...', () => {
@@ -30,32 +31,32 @@ describe('fizz buzz', () => {
 
   it(`upToStringZipImmutable '${n}' iterations`, () => {
     const actual = FizzBuzz.upToStringZipImuutable(n);
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToStringZip '${n}' iterations`, () => {
     const actual = FizzBuzz.upToStringZip(n);
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToLookUp '${n}' iterations`, () => {
     const actual = FizzBuzz.upToLookUp(n);
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToConditional '${n}' iterations`, () => {
     const actual = FizzBuzz.upToConditional(n);
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToPipeline '${n}' iterations`, () => {
     const actual = FizzBuzz.upToPipeline(n);
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToWithProcessEngine '${n}' iterations`, async() => {
@@ -63,8 +64,8 @@ describe('fizz buzz', () => {
 
     const actual = await fizzbuzzUpTo({upTo: n + 1, i: 1});
 
-    should(actual.length).eql(n);
-    should(R.last(actual)).eql('buzz');
+    expect(actual.length).toEqual(n);
+    expect(R.last(actual)).toEqual('buzz');
   });
 
   it(`upToWithProcessEngine '17' iterations`, async() => {
@@ -72,6 +73,6 @@ describe('fizz buzz', () => {
 
     const actual = await fizzbuzzUpTo({upTo: 18, i: 1});
 
-    should(actual).eql(['1', '2', 'fizz', '4', 'buzz', 'fizz', '7', '8', 'fizz', 'buzz', '11', 'fizz', '13', '14', 'fizzbuzz', '16', '17']);
+    expect(actual).toEqual(['1', '2', 'fizz', '4', 'buzz', 'fizz', '7', '8', 'fizz', 'buzz', '11', 'fizz', '13', '14', 'fizzbuzz', '16', '17']);
   });
 });

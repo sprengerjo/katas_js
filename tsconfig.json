@@ -2,12 +2,10 @@
   "typingOptions": {
     "enableAutoDiscovery": true
   },
+  "compileOnSave": true,
   "compilerOptions": {
     "module": "commonjs",
-    "target": "esnext",
-    "lib": [
-      "es2017"
-    ],
+    "target": "es6",
     "sourceMap": true,
     "experimentalDecorators": true,
     "outDir": "./dist"
